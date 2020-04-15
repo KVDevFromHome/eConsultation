@@ -1,0 +1,31 @@
+
+<nav role="navigation" class="navbar navbar-default">
+	<div class="">
+		<a href="" class="navbar-brand">Welcome</a>
+	</div>
+	<div class="navbar-collapse" id="main-menu">
+	
+		<sec:authorize access="isAuthenticated()">
+			<ul class="nav navbar-nav" id="main-menu-list">
+				<li class="active"><a href="/welcome">Home</a></li>
+				<sec:authorize access="hasRole('Admin')">
+					<li><a href="/list-todos">Todos</a></li>	
+				</sec:authorize>
+				
+				<sec:authorize access="hasAnyRole('Patient', 'Doctor')">
+					<li><a href="/list-users?roleId=1">Patients List</a></li>
+					<li><a href="/list-users?roleId=2">Doctors List</a></li>
+				</sec:authorize>
+			</ul>
+
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="/logout">Logout</a></li>
+			</ul>
+		</sec:authorize>
+		<sec:authorize access="!isAuthenticated()">
+		  <ul class="nav navbar-nav navbar-right">
+				<li><a href="/login">Login</a></li>
+			</ul>
+		</sec:authorize>
+	</div>
+</nav>
