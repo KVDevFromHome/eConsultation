@@ -1,5 +1,6 @@
 package com.econsultation.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -17,25 +18,35 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Entity
 @Table(name = "TBL_USER", schema="learn")
-public class User {
+public class User implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 765495067273496403L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long userId;
+	
 	@Size(min=3, message="First Name is Mandatory, enter minimum 3 characters!")
 	private String firstName;
 	private String lastName;
+	
 	@Size(min=5, message="Email is Mandatory, enter minimum 3 characters!")
+	@Column(unique = true)
 	private String primaryEmail;
+	
 	private String primaryMobile;
 	
 	
 	//private long roleId;
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne
     @JoinColumn(name = "roleId", referencedColumnName = "roleId")
     private UserRole userRole;
 	
 	@Size(min=6, message="User Name is Mandatory, enter minimum 8 characters!")
+	@Column(unique = true)
 	private String userName;
 	
 
@@ -206,7 +217,7 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = new BCryptPasswordEncoder().encode(password);
-		//this.password = password;//new BCryptPasswordEncoder().encode(password);
+		//this.password = password;
 	}
 
 	public UserRole getUserRole() {

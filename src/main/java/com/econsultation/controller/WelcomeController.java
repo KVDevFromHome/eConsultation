@@ -8,6 +8,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.econsultation.model.User;
 import com.econsultation.service.WelcomeService;
 
 @Controller
@@ -21,7 +22,12 @@ public class WelcomeController {
 //	private BasicConfiguration configuration;
 
 	@GetMapping("/login")
-	public String login() {
+	public String login(ModelMap model) {
+		return "login-form";
+	}
+	
+	@PostMapping("/login")
+	public String loginPost(ModelMap model) {
 		return "login-form";
 	}
 
@@ -29,7 +35,7 @@ public class WelcomeController {
 	@GetMapping("/")
 	public String showLoginPage(ModelMap model) {
 		model.addAttribute("time", LocalDateTime.now().toString());
-		model.put("name", service.getLoggedinUserName());
+		model.put("userName", "Get: " + service.getLoggedinUserName());
 		return "welcome";//"login-form";
 	}
 	
@@ -37,7 +43,7 @@ public class WelcomeController {
 	@GetMapping("/welcome")
 	public String showWelcomePage(ModelMap model) {
 		model.addAttribute("time", LocalDateTime.now().toString());
-		model.put("name", service.getLoggedinUserName());
+		model.put("userName", "Get: " + service.getLoggedinUserName());
 		return "welcome";
 	}
 
@@ -45,7 +51,7 @@ public class WelcomeController {
 	@PostMapping ("/welcome")
 	public String loginAction(ModelMap model) {
 		model.addAttribute("time", LocalDateTime.now().toString());
-		model.put("userName", service.getLoggedinUserName());
+		model.put("userName", "Post: " + service.getLoggedinUserName());
 		return "welcome";
 	}
 

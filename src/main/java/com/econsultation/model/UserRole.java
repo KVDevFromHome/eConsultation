@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 @Table(name = "TBL_USER_ROLE", schema="learn")
 public class UserRole {
@@ -14,8 +16,13 @@ public class UserRole {
 	@Id
 	private Long roleId;
 	private String roleName;
+	
+	@JsonFormat(pattern="yyyy-MM-dd")
 	private Date startDate;
+	
+	@JsonFormat(pattern="yyyy-MM-dd")
 	private Date endDate;
+	
 	private String access;
 	
 //	@ManyToOne(cascade = CascadeType.ALL, fetch= FetchType.LAZY, targetEntity = User.class)

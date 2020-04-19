@@ -9,9 +9,17 @@
 			<c:if test="${param.logout != null}">
 				<p style='color: blue'>You have been logged out.</p>
 			</c:if>
+			
+			<c:if test="${userInfo != null}">
+				<p style='color: blue'>user ${userInfo.firstName} ${userInfo.lastName} added successfully!.</p>
+			</c:if>
+			
 			<fieldset>
-				<label>Enter your User Name</label> <input type="text" id="txtUsername" name="txtUsername"
-					class="form-control" required="required">
+				<label>Enter your User Name</label> 
+				
+					<input type="text" id="txtUsername" name="txtUsername"
+					class="form-control" required="required" value="${userInfo.userName}">
+			
 			</fieldset>
 			<br />
 			<fieldset>
@@ -25,8 +33,8 @@
 		</form:form>
 		<div>Not yet Registered? </div>
 		</br></br>
-		<div>Register as <a href="/create-user?roleId=2" >Doctor</a></div></br>
-		<div>Register as <a href="/create-user?roleId=1" >Patient</a></div>
+		<div>Register as <a href="/add-user?roleId=2" >Doctor</a></div></br>
+		<div>Register as <a href="/add-user?roleId=1" >Patient</a></div>
 
 	</div>
 	<%@ include file="common/footer.jspf"%>

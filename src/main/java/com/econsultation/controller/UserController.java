@@ -119,8 +119,8 @@ public class UserController {
 	public String addUserAction(ModelMap model, @Valid User user, BindingResult result) {
 
 		log.info("Add Users Action - user : " + user.toString());
-		log.info("Add Users Action -model : " + model.toString());
-		log.info("Add Users Action -result : " + result.toString());
+		log.info("Add Users Action - model : " + model.toString());
+		log.info("Add Users Action - result : " + result.toString());
 		Long roleId = user.getUserRole().getRoleId();
 		user.setUserRole(roleRepo.findUserRoleByRoleId(roleId));
 		
@@ -131,9 +131,11 @@ public class UserController {
 		}
 		//user.setUser(getLoggedInUserName(model));
 
-		userRepo.save(user);
-		/*service.addTodo(getLoggedInUserName(model), todo.getDesc(), todo.getTargetDate(),
-				false);*/
-		return "redirect:/list-users?roleId="+roleId;
+		User user1 =  userRepo.save(user);
+
+		//return "redirect:/list-users?roleId="+roleId;
+		model.addAttribute("roleId", "roleId");
+		model.addAttribute("userInfo", user1);
+		return "login-form";
 	}
 }

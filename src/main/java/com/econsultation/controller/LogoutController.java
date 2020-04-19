@@ -13,21 +13,36 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-@Controller
+//@Controller
 public class LogoutController {
 
-	@RequestMapping(value = "/logout", method = RequestMethod.GET)
-	public String logout(HttpServletRequest request,
-			HttpServletResponse response) {
-		
-		Authentication authentication = SecurityContextHolder.getContext()
-				.getAuthentication();
-		
-		if (authentication != null) {
-			new SecurityContextLogoutHandler().logout(request, response,
-					authentication);
-		}
-
-		return "redirect:/login";
-	}
+//	@RequestMapping(value = "/appLogout", method = RequestMethod.GET)
+//	public String logoutGet(HttpServletRequest request,
+//			HttpServletResponse response) {
+//		
+//		Authentication authentication = SecurityContextHolder.getContext()
+//				.getAuthentication();
+//		
+//		if (authentication != null) {
+//			new SecurityContextLogoutHandler().logout(request, response,
+//					authentication);
+//		}
+//
+//		return "login-form";
+//	}
+//	
+//	@RequestMapping(value = "/appLogout", method = RequestMethod.POST)
+//	public String logoutPost(HttpServletRequest request,
+//			HttpServletResponse response) {
+//		
+//		Authentication authentication = SecurityContextHolder.getContext()
+//				.getAuthentication();
+//		
+//		if (authentication != null) {
+//			new SecurityContextLogoutHandler().logout(request, response,
+//					authentication);
+//		}
+//
+//		return "login-form";
+//	}
 }
