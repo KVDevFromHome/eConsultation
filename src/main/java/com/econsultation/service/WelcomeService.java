@@ -31,4 +31,16 @@ public class WelcomeService {
 		
 		return principal.toString();
 	}
+	
+	public UserDetails getPrincipal() {
+		Object principal = SecurityContextHolder.getContext()
+				.getAuthentication().getPrincipal();
+		
+		if (principal instanceof UserDetails) {
+			
+			return ((UserDetails) principal);
+		}
+		
+		return null;
+	}
 }

@@ -147,6 +147,20 @@ public class User implements Serializable {
 		this.startDate = startDate;
 		//this.endDate = endDate;
 	}
+	
+	public User( String userName, String userPass,String firstName,
+			String lastName, String primaryEmail, String primaryMobile, UserRole userRole, Date startDate) {//, Date endDate) {
+		super();
+		this.userName = userName;
+		this.password = userPass;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.primaryEmail = primaryEmail;
+		this.primaryMobile = primaryMobile;
+		this.userRole = userRole;
+		this.startDate = startDate;
+		//this.endDate = endDate;
+	}
 
 	@Override
 	public String toString() {
