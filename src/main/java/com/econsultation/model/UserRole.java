@@ -1,6 +1,6 @@
 package com.econsultation.model;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.Objects;
 
 import javax.persistence.Entity;
@@ -24,6 +24,18 @@ public class UserRole {
 	private Date endDate;
 	
 	private String access;
+	
+	protected UserRole()
+	{};
+	
+	public UserRole(long roleId, String roleName, Date startDate, String access)
+	{
+		super();
+		this.roleId = roleId;
+		this.roleName = roleName;
+		this.startDate = startDate;
+		this.access = access;
+	}
 	
 //	@ManyToOne(cascade = CascadeType.ALL, fetch= FetchType.LAZY, targetEntity = User.class)
 //	@JoinColumn(name = "userId", referencedColumnName = "userId")

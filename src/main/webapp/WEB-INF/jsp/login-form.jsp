@@ -17,13 +17,13 @@
 			<fieldset>
 				<label>Enter your User Name</label> 
 				
-					<input type="text" id="txtUsername" name="txtUsername"
+					<input type="text" id="username" name="username"
 					class="form-control" required="required" value="${userInfo.userName}">
 			
 			</fieldset>
 			<br />
 			<fieldset>
-				<label>Enter your Password</label> <input type="password" id="txtPassword" name="txtPassword" class="form-control" required="required">
+				<label>Enter your Password</label> <input type="password" id="password" name="password" class="form-control" required="required">
 			</fieldset>
 			<br />
 			<div class="form-actions" style="margin-top: 12px;">
